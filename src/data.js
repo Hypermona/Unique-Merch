@@ -1,7 +1,7 @@
 export const ITEMS = [
   {
     id: 0,
-    name: "Mivi Zero Portable Bluetooth Speaker",
+    name: "Mivi Zero..",
     fullName: "Mivi Zero Portable Bluetooth Speaker  (Black, Mono Channel)",
     image: "./images/speaker.jpeg",
     category: "speakers",
@@ -9,7 +9,7 @@ export const ITEMS = [
     warranty: true,
     warrantyDuration: "1 Year",
     colors: ["black"],
-    tranding: true,
+    trending: true,
     price: "899",
     originalPrice: "4000",
     description:
@@ -55,7 +55,7 @@ export const ITEMS = [
   },
   {
     id: 1,
-    name: "JBL Go PLUS Portable Bluetooth Speaker",
+    name: "JBL Go PLUS",
     fullName: "JBL Go PLUS Portable Bluetooth Speaker  (Black, Mono Channel)",
     image: "./images/jblspeaker.jpeg",
     category: "speakers",
@@ -63,7 +63,7 @@ export const ITEMS = [
     warranty: true,
     warrantyDuration: "1 Year",
     colors: ["black", "blue", "red"],
-    tranding: false,
+    trending: false,
     price: "1,599",
     originalPrice: "2,799",
     description:
@@ -109,7 +109,7 @@ export const ITEMS = [
   },
   {
     id: 2,
-    name: "boAt Stone230 3 W Bluetooth Speaker",
+    name: "boAt Stone..",
     fullName:
       "boAt Stone230 3 W Bluetooth Speaker  (Charcoal Black, Mono Channel)",
     image: "./images/boat3w.jpeg",
@@ -118,7 +118,7 @@ export const ITEMS = [
     warranty: true,
     warrantyDuration: "1 Year",
     colors: ["Charcoal Black", "Midnight blue"],
-    tranding: false,
+    trending: false,
     price: "999",
     originalPrice: "2,999",
     description:
@@ -164,7 +164,7 @@ export const ITEMS = [
   },
   {
     id: 3,
-    name: "boAt Stone 300 5 W Bluetooth Speaker",
+    name: "boAt Stone..",
     fullName: "boAt Stone 300 5 W Bluetooth Speaker  (Red, Mono Channel)",
     image: "./images/boat5w.jpeg",
     category: "speakers",
@@ -172,7 +172,7 @@ export const ITEMS = [
     warranty: true,
     warrantyDuration: "1 Year",
     colors: ["Black", "blue", "red"],
-    tranding: false,
+    trending: false,
     price: "1,299",
     originalPrice: "3,499",
     description:
@@ -218,7 +218,7 @@ export const ITEMS = [
   },
   {
     id: 4,
-    name: "Samsung Galaxy S20 Ultra",
+    name: "Samsung Ga..",
     fullName: "Samsung Galaxy S20 Ultra (Cosmic Gray, 128 GB)  (12 GB RAM)",
     image: "./images/samsungGalaxyS20Ultra.jpeg",
     category: "mobiles",
@@ -226,7 +226,7 @@ export const ITEMS = [
     warranty: true,
     warrantyDuration: "1 Year",
     colors: ["Black"],
-    tranding: true,
+    trending: true,
     price: "97,999",
     originalPrice: "1,03,000",
     description:
@@ -280,7 +280,7 @@ export const ITEMS = [
     warranty: true,
     warrantyDuration: "1 Year",
     colors: ["Glacier Ice White", "Midnight Ocean Black"],
-    tranding: false,
+    trending: false,
     price: "29,499",
     originalPrice: "32,990",
     description:
@@ -334,7 +334,7 @@ export const ITEMS = [
     warranty: true,
     warrantyDuration: "1 Year",
     colors: ["Black", "Green", "Purple"],
-    tranding: false,
+    trending: false,
     price: "73,600",
     originalPrice: "73,600",
     description:
@@ -380,7 +380,7 @@ export const ITEMS = [
   },
   {
     id: 7,
-    name: "Motorola G8 Power Lite",
+    name: "Motorola G8",
     fullName: "Motorola G8 Power Lite (Royal Blue, 64 GB)  (4 GB RAM)",
     image: "./images/motorolaG8PowerLite.jpeg",
     category: "mobiles",
@@ -388,7 +388,7 @@ export const ITEMS = [
     warranty: true,
     warrantyDuration: "1 Year",
     colors: ["Arctic Blue", "Royal Blue"],
-    tranding: false,
+    trending: false,
     price: "9,499",
     originalPrice: "9,999",
     description:
@@ -434,7 +434,7 @@ export const ITEMS = [
   },
   {
     id: 8,
-    name: "Embroidered Silk..",
+    name: "Embroidered..",
     fullName: "Embroidered Silk Blend Semi Stitched Anarkali Gown  (Dark Blue)",
     image: "./images/kedarFabAnarakali.jpeg",
     category: "women",
@@ -442,7 +442,7 @@ export const ITEMS = [
     warranty: false,
     warrantyDuration: "0",
     colors: ["Black", "Dark Blue", "Dark Green", "Maroon", "Purple", "Yellow"],
-    tranding: true,
+    trending: true,
     price: "1,099",
     originalPrice: "5,999",
     description:
@@ -488,7 +488,7 @@ export const ITEMS = [
   },
   {
     id: 9,
-    name: "Embroidered Semi..",
+    name: "Embroidered Se..",
     fullName: "Embroidered Semi Stitched Lehenga Choli  (Maroon)",
     image: "./images/shreeImplexEmboroidered.jpeg",
     category: "women",
@@ -496,7 +496,7 @@ export const ITEMS = [
     warranty: false,
     warrantyDuration: "0",
     colors: ["Black", "Dark Blue", "Dark Green", "Maroon", "Purple", "Yellow"],
-    tranding: false,
+    trending: false,
     price: "999",
     originalPrice: "5,999",
     description:
@@ -550,7 +550,7 @@ export const ITEMS = [
     warranty: false,
     warrantyDuration: "0",
     colors: ["Black", "Dark Blue", "Dark Green", "Maroon", "Yellow"],
-    tranding: false,
+    trending: false,
     price: "355",
     originalPrice: "1,399",
     description:
@@ -604,9 +604,225 @@ export const ITEMS = [
     warranty: false,
     warrantyDuration: "0",
     colors: ["Black", "Dark Blue", "Dark Green", "Yellow"],
-    tranding: false,
+    trending: false,
     price: "449",
     originalPrice: "899",
+    description:
+      "Embroidered Silk Blend Semi Stitched Anarkali Gown broidered Silk Blend Semi Stitched Anarkali Gown idered Silk Blend Semi Stitched Anarkali Gown mbroidered Silk Blend Semi Stitched Anarkali Gown.",
+    comments: [
+      {
+        id: 0,
+        rating: 5,
+        comment: "Imagine all the eatables, living in conFusion!",
+        author: "John Lemon",
+        date: "2012-10-16T17:57:28.556094Z",
+      },
+      {
+        id: 1,
+        rating: 4,
+        comment:
+          "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
+        author: "Paul McVites",
+        date: "2014-09-05T17:57:28.556094Z",
+      },
+      {
+        id: 2,
+        rating: 3,
+        comment: "Eat it, just eat it!",
+        author: "Michael Jaikishan",
+        date: "2015-02-13T17:57:28.556094Z",
+      },
+      {
+        id: 3,
+        rating: 4,
+        comment: "Ultimate, Reaching for the stars!",
+        author: "Ringo Starry",
+        date: "2013-12-02T17:57:28.556094Z",
+      },
+      {
+        id: 4,
+        rating: 2,
+        comment: "It's your birthday, we're gonna party!",
+        author: "25 Cent",
+        date: "2011-12-02T17:57:28.556094Z",
+      },
+    ],
+  },
+  {
+    id: 12,
+    name: "Solid Men..",
+    fullName: "Solid Men Mandarin Collar White, Black T-Shirt",
+    image: "./images/SolidMenMandarinCollarWhiteBlackT-Shirt.jpeg",
+    category: "men",
+    rating: 4.0,
+    warranty: false,
+    warrantyDuration: "0",
+    colors: ["Black", "Dark Blue", "Dark Green", "Yellow"],
+    trending: true,
+    price: "341",
+    originalPrice: "1,999",
+    description:
+      "Embroidered Silk Blend Semi Stitched Anarkali Gown broidered Silk Blend Semi Stitched Anarkali Gown idered Silk Blend Semi Stitched Anarkali Gown mbroidered Silk Blend Semi Stitched Anarkali Gown.",
+    comments: [
+      {
+        id: 0,
+        rating: 5,
+        comment: "Imagine all the eatables, living in conFusion!",
+        author: "John Lemon",
+        date: "2012-10-16T17:57:28.556094Z",
+      },
+      {
+        id: 1,
+        rating: 4,
+        comment:
+          "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
+        author: "Paul McVites",
+        date: "2014-09-05T17:57:28.556094Z",
+      },
+      {
+        id: 2,
+        rating: 3,
+        comment: "Eat it, just eat it!",
+        author: "Michael Jaikishan",
+        date: "2015-02-13T17:57:28.556094Z",
+      },
+      {
+        id: 3,
+        rating: 4,
+        comment: "Ultimate, Reaching for the stars!",
+        author: "Ringo Starry",
+        date: "2013-12-02T17:57:28.556094Z",
+      },
+      {
+        id: 4,
+        rating: 2,
+        comment: "It's your birthday, we're gonna party!",
+        author: "25 Cent",
+        date: "2011-12-02T17:57:28.556094Z",
+      },
+    ],
+  },
+  {
+    id: 13,
+    name: "Men Striped..",
+    fullName: "Men Striped Casual Mandarin Shirt",
+    image: "./images/MenStripedCasualMandarinShirt.jpeg",
+    category: "men",
+    rating: 3.8,
+    warranty: false,
+    warrantyDuration: "0",
+    colors: ["Black", "Dark Blue", "Dark Green", "Yellow"],
+    trending: false,
+    price: "567",
+    originalPrice: "1,499",
+    description:
+      "Embroidered Silk Blend Semi Stitched Anarkali Gown broidered Silk Blend Semi Stitched Anarkali Gown idered Silk Blend Semi Stitched Anarkali Gown mbroidered Silk Blend Semi Stitched Anarkali Gown.",
+    comments: [
+      {
+        id: 0,
+        rating: 5,
+        comment: "Imagine all the eatables, living in conFusion!",
+        author: "John Lemon",
+        date: "2012-10-16T17:57:28.556094Z",
+      },
+      {
+        id: 1,
+        rating: 4,
+        comment:
+          "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
+        author: "Paul McVites",
+        date: "2014-09-05T17:57:28.556094Z",
+      },
+      {
+        id: 2,
+        rating: 3,
+        comment: "Eat it, just eat it!",
+        author: "Michael Jaikishan",
+        date: "2015-02-13T17:57:28.556094Z",
+      },
+      {
+        id: 3,
+        rating: 4,
+        comment: "Ultimate, Reaching for the stars!",
+        author: "Ringo Starry",
+        date: "2013-12-02T17:57:28.556094Z",
+      },
+      {
+        id: 4,
+        rating: 2,
+        comment: "It's your birthday, we're gonna party!",
+        author: "25 Cent",
+        date: "2011-12-02T17:57:28.556094Z",
+      },
+    ],
+  },
+  {
+    id: 14,
+    name: "Men Solid..",
+    fullName: "Men Solid Formal Slim Shirt",
+    image: "./images/MenSolidFormalSlimShirt.jpeg",
+    category: "men",
+    rating: 4.0,
+    warranty: false,
+    warrantyDuration: "0",
+    colors: ["Black", "Dark Blue", "Dark Green", "Yellow"],
+    trending: false,
+    price: "560",
+    originalPrice: "1,199",
+    description:
+      "Embroidered Silk Blend Semi Stitched Anarkali Gown broidered Silk Blend Semi Stitched Anarkali Gown idered Silk Blend Semi Stitched Anarkali Gown mbroidered Silk Blend Semi Stitched Anarkali Gown.",
+    comments: [
+      {
+        id: 0,
+        rating: 5,
+        comment: "Imagine all the eatables, living in conFusion!",
+        author: "John Lemon",
+        date: "2012-10-16T17:57:28.556094Z",
+      },
+      {
+        id: 1,
+        rating: 4,
+        comment:
+          "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
+        author: "Paul McVites",
+        date: "2014-09-05T17:57:28.556094Z",
+      },
+      {
+        id: 2,
+        rating: 3,
+        comment: "Eat it, just eat it!",
+        author: "Michael Jaikishan",
+        date: "2015-02-13T17:57:28.556094Z",
+      },
+      {
+        id: 3,
+        rating: 4,
+        comment: "Ultimate, Reaching for the stars!",
+        author: "Ringo Starry",
+        date: "2013-12-02T17:57:28.556094Z",
+      },
+      {
+        id: 4,
+        rating: 2,
+        comment: "It's your birthday, we're gonna party!",
+        author: "25 Cent",
+        date: "2011-12-02T17:57:28.556094Z",
+      },
+    ],
+  },
+  {
+    id: 15,
+    name: "Regular Fit..",
+    fullName: "Regular Fit Men Beige Cotton Lycra Blend Trousers",
+    image: "./images/RegularFitMenBeigeCottonLycraBlendtrousers.jpeg",
+    category: "men",
+    rating: 4.0,
+    warranty: false,
+    warrantyDuration: "0",
+    colors: ["Black", "Dark Blue", "Dark Green", "Yellow"],
+    trending: false,
+    price: "845",
+    originalPrice: "1,999",
     description:
       "Embroidered Silk Blend Semi Stitched Anarkali Gown broidered Silk Blend Semi Stitched Anarkali Gown idered Silk Blend Semi Stitched Anarkali Gown mbroidered Silk Blend Semi Stitched Anarkali Gown.",
     comments: [
