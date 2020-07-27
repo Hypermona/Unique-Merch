@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
 import Header from "./Components/Header/Header";
-import ImgCarousel from "./Components/Body/Carousel";
+import MainBody from "./Components/Body/MainBody";
 
 function App() {
   return (
     <>
       <Header />
-      <ImgCarousel />
+      <MainBody />
     </>
   );
 }

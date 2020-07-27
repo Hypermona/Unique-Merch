@@ -1,32 +1,33 @@
 import React, { Component } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import "./Category.css";
 
 const useStyles = makeStyles((theme) => ({
   itemGroup: {
     flexGrow: 1,
+    margin: "0 1vw",
     flexWrap: "wrap",
     justifyContent: "center",
     alignItems: "center",
   },
   items: {},
 }));
+
+// Category dropdown component
 function RenderDropdown({ title }) {
   return (
-    <Button>
-      <div class="dropdown">
-        <button class="dropbtn">
-          <Typography variant="overline">{title}</Typography>
-        </button>
-        <div class="dropdown-content">
-          <a href="#h">Link 1</a>
-          <a href="#h">Link 2</a>
-          <a href="#h">Link 3</a>
-        </div>
+    <div className="dropdown" style={{ marginRight: 10 }}>
+      <button className="dropbtn">
+        <Typography variant="overline">{title}</Typography>
+      </button>
+      <div className="dropdown-content">
+        <a href="#h">Link 1</a>
+        <a href="#h">Link 2</a>
+        <a href="#h">Link 3</a>
       </div>
-    </Button>
+    </div>
   );
 }
 function RenderDesktopCategory(props) {
@@ -45,6 +46,8 @@ function RenderDesktopCategory(props) {
     </div>
   );
 }
+
+// rendering dropdown separately for mobile
 function RenderMobileCategory() {
   const classes = useStyles();
   return (
@@ -58,9 +61,9 @@ function RenderMobileCategory() {
 export default class Category extends Component {
   render() {
     if (this.props.matches) {
-      return <RenderDesktopCategory />;
+      return <RenderDesktopCategory />; //if it is desktop
     } else {
-      return <RenderMobileCategory />;
+      return <RenderMobileCategory />; //if it is mobile device
     }
   }
 }

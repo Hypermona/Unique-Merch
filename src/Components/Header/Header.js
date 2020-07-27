@@ -15,6 +15,7 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import Category from "./Category";
 
 const useStyles = makeStyles((theme) => ({
+  //styles
   root: {
     flexGrow: 1,
   },
@@ -75,6 +76,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+// logo component
 function Logo({ matches, classes }) {
   if (matches) {
     return (
@@ -89,9 +92,10 @@ function Logo({ matches, classes }) {
   }
 }
 
+// main header component
 export default function Header() {
-  const matches = useMediaQuery("(min-width:600px)");
-  const classes = useStyles();
+  const matches = useMediaQuery("(min-width:600px)"); //to calculate device width
+  const classes = useStyles(); //intialized styles
   return (
     <div className={classes.root}>
       <AppBar position="sticky">
@@ -130,7 +134,8 @@ export default function Header() {
       <Grid>
         <Grid container item xs={12} justify="center">
           <Paper elevation={0}>
-            <Category matches={matches} />
+            <Category matches={matches} />{" "}
+            {/*rendering aboove category component here */}
           </Paper>
         </Grid>
       </Grid>
