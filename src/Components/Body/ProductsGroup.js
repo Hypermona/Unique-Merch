@@ -4,7 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import { ITEMS } from "../../data";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-
+import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -30,13 +30,16 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
     margin: "auto",
     width: "90vw",
+    borderRadius: 5,
+    marginBottom: "2vh",
+    boxShadow: "0px 2px 4px -2px rgba(0,0,0,0.65)",
   },
 }));
 
 function Group({ item }) {
   const classes = useStyles();
   return (
-    <Grid item lg={2} className={classes.root} md={6} spacing={0}>
+    <Grid item lg={2} className={classes.root} md={6} key={item.id}>
       <Paper
         style={{ height: 200, width: 180, alignItems: "center" }}
         elevation={0}
@@ -50,7 +53,9 @@ function Group({ item }) {
             className={classes.image}
           />
         </div>
-        <p align="center">{item.name}</p>
+        <Typography variant="subtitle1" align="center">
+          {item.name}
+        </Typography>
       </Paper>
     </Grid>
   );
@@ -61,23 +66,14 @@ function RenderProductGroup() {
   const result = ITEMS.filter((item) => item.trending);
   const matches = useMediaQuery("(min-width:600px)"); //to calculate device width
   return (
-    // <Grid
-    //   container
-    //   direction="row"
-    //   justify="center"
-    //   alignItems="center"
-    //   spacing={0}
-    // >
-    //   {result.map((item) => (
-    //     <Group item={item} />
-    //   ))}
-    // </Grid>
     <div
       className={classes.productGroup}
       style={{ backgroundColor: !matches ? "inherit" : "white" }}
     >
       {result.map((item) => (
-        <Group item={item} />
+        <div key={item.id}>
+          <Group item={item} />
+        </div>
       ))}
     </div>
   );
