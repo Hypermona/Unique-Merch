@@ -8,7 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import LocalFloristIcon from "@material-ui/icons/LocalFlorist";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import Tabs from "@material-ui/core/Tabs";
+import { NavLink } from "react-router-dom";
+import "./carousel.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -107,53 +108,66 @@ function RenderProductGroup({ items }) {
             <Group item={item} />
           </div>
         ))}
+
         <Grid item lg={2} className={classes.root} md={6}>
           <Paper className={classes.paperCard} elevation={0}>
-            <IconButton size="medium" edge="end">
-              <ArrowForwardIosIcon fontSize="large" />
-            </IconButton>
-            <Typography variant="subtitle1" color="textSecondary">
-              View All
-            </Typography>
-          </Paper>
-        </Grid>
-      </div>
-    );
-  } else {
-    return (
-      <div
-        className={classes.productGroup}
-        style={{ backgroundColor: "white" }}
-      >
-        <Tabs variant="scrollable" scrollButtons="desktop">
-          <Grid item lg={2} className={classes.root} md={6}>
-            <Paper className={classes.paperCard} elevation={0}>
-              <LocalFloristIcon />
-              <Typography variant="button">{items[0].category}</Typography>
-              <Typography variant="button" color="textSecondary">
-                limited offer
-              </Typography>
-              <Typography variant="caption" color="error">
-                1 day 2hrs 59min left
-              </Typography>
-            </Paper>
-          </Grid>
-          {items.map((item) => (
-            <div key={item.id}>
-              <Group item={item} />
-            </div>
-          ))}
-          <Grid item lg={2} className={classes.root} md={6}>
-            <Paper className={classes.paperCard} elevation={0}>
+            <NavLink
+              to={{ pathname: "/more", state: items }}
+              style={{ textDecoration: "none" }}
+            >
               <IconButton size="medium" edge="end">
                 <ArrowForwardIosIcon fontSize="large" />
               </IconButton>
               <Typography variant="subtitle1" color="textSecondary">
                 View All
               </Typography>
-            </Paper>
-          </Grid>
-        </Tabs>
+            </NavLink>
+          </Paper>
+        </Grid>
+      </div>
+    );
+  } else {
+    return (
+      <div className="scroll-view" style={{ backgroundColor: "white" }}>
+        <Grid item lg={2} className={classes.root} md={6}>
+          <Paper className={classes.paperCard} elevation={0}>
+            <LocalFloristIcon />
+            <Typography variant="button">{items[0].category}</Typography>
+            <Typography variant="button" color="textSecondary">
+              limited offer
+            </Typography>
+
+            <Typography variant="caption" color="error">
+              1 day 2hrs 59min left
+            </Typography>
+          </Paper>
+        </Grid>
+        {items.map((item) => (
+          <div key={item.id}>
+            <Group item={item} />
+          </div>
+        ))}
+        {items.map((item) => (
+          <div key={item.id}>
+            <Group item={item} />
+          </div>
+        ))}
+
+        <Grid item lg={2} className={classes.root} md={6}>
+          <Paper className={classes.paperCard} elevation={0}>
+            <NavLink
+              to={{ pathname: "/more", state: items }}
+              style={{ textDecoration: "none" }}
+            >
+              <IconButton size="medium" edge="end">
+                <ArrowForwardIosIcon fontSize="large" />
+              </IconButton>
+              <Typography variant="subtitle1" color="textSecondary">
+                View All
+              </Typography>
+            </NavLink>
+          </Paper>
+        </Grid>
       </div>
     );
   }

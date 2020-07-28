@@ -1,14 +1,13 @@
 import React from "react";
 import "./App.css";
-import Header from "./Components/Header/Header";
-import MainBody from "./Components/Body/MainBody";
+import Main from "./Components/main";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <Header />
-      <MainBody />
-    </>
+    <BrowserRouter>
+      <Main />
+    </BrowserRouter>
   );
 }
 
