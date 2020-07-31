@@ -1,10 +1,17 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import { ITEMS } from "../../data";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Typography from "@material-ui/core/Typography";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import StarRate from "@material-ui/icons/StarRate";
+import IconButton from "@material-ui/core/IconButton";
+import { Link } from "react-router-dom";
+import "./carousel.css";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -38,24 +45,53 @@ const useStyles = makeStyles((theme) => ({
 
 function Group({ item }) {
   const classes = useStyles();
+  const [fav, setFav] = useState(false);
   return (
     <Grid item lg={2} className={classes.root} md={6} key={item.id}>
       <Paper
-        style={{ height: 200, width: 180, alignItems: "center" }}
+        style={{ height: 250, width: 180, alignItems: "center" }}
         elevation={0}
       >
-        <div className={classes.imageDiv}>
-          <img
-            src={item.image}
-            alt={item.name}
-            height={item.height}
-            width={item.width}
-            className={classes.image}
-          />
+        <div className="rating">
+          <div className="rating-icon">
+            <p>{item.rating}</p>
+            <StarRate className="rating-star" fontSize="small" />
+          </div>
+          <IconButton
+            color="secondary"
+            onClick={() => {
+              setFav(!fav);
+            }}
+          >
+            {fav ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+          </IconButton>
         </div>
-        <Typography variant="subtitle1" align="center">
-          {item.name}
-        </Typography>
+        <Link
+          to={{ pathname: "/details", state: item }}
+          style={{ textDecoration: "none" }}
+        >
+          <div className={classes.imageDiv}>
+            <img
+              src={item.image}
+              alt={item.name}
+              height={item.height}
+              width={item.width}
+              className={classes.image}
+            />
+          </div>
+        </Link>
+        <Link
+          to={{ pathname: "/details", state: item }}
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <Typography
+            variant="subtitle1"
+            align="center"
+            className="detail-title"
+          >
+            {item.name}
+          </Typography>
+        </Link>
       </Paper>
     </Grid>
   );

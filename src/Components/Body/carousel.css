@@ -28,3 +28,112 @@
   border-radius: 5px;
   border-bottom: 0.5px solid rgb(207, 205, 205);
 }
+.rating {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.rating-icon {
+  display: flex;
+  background-color: green;
+  font-size: 13px;
+  color: white;
+  border-radius: 5px;
+  margin: auto 0px;
+  padding: 1px 3px;
+  max-width: 40px;
+}
+.rating-icon p {
+  margin: 0 0;
+  padding: 0px 0px 0px 3px;
+}
+@media only screen and (max-width: 600px) {
+  .rating-icon p {
+    margin: 2.5px 0;
+  }
+  .rating-star {
+    height: 5px;
+    width: 5px;
+  }
+}
+.rating-star {
+  height: 5px;
+  width: 5px;
+  margin: 0px 0px;
+}
+/* ############################################# */
+.detail {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 95vw;
+  margin: 2vh auto;
+  background-color: white;
+  box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.65);
+}
+.detail-box-image {
+  text-align: center;
+  max-width: 95vw;
+  margin: 2vh auto;
+}
+
+.detail-box-details {
+  max-width: 95vw;
+  margin: 2vh auto;
+  padding: 20px;
+}
+.detail-image {
+  max-height: 50vh;
+  padding: 20px;
+  margin: auto;
+}
+.detail-title {
+}
+.item-price {
+  display: flex;
+  align-items: flex-end;
+  padding: 5px;
+}
+.selling-price {
+  padding: 0px 5px 0 0;
+}
+.ratings-and-reviews {
+  display: flex;
+  padding: 3px 0;
+}
+.round {
+  margin: 10px 5px 5px 5px;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+}
+.avail-colors {
+  display: flex;
+  padding: 10px 3px;
+}
+.description {
+  display: flex;
+  padding: 16px 0px;
+}
+@media only screen and (max-width: 600px) {
+  .detail-box-image {
+    text-align: center;
+    max-width: 90vw;
+    margin: 2vh auto;
+  }
+  .detail-box-details {
+    max-width: 90vw;
+    margin: 2vh auto;
+    padding: 20px;
+  }
+  .detail-title {
+    margin: auto;
+    padding: 0 20px;
+  }
+  .detail-image {
+    max-height: 50vh;
+    max-width: 80vw;
+    padding: auto;
+    margin: auto;
+  }
+}

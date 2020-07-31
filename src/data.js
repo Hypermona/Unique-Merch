@@ -311,7 +311,7 @@ export const ITEMS = [
     rating: 4.5,
     warranty: true,
     warrantyDuration: "1 Year",
-    colors: ["Glacier Ice White", "Midnight Ocean Black"],
+    colors: ["white", "Black"],
     trending: false,
     height: 150,
     width: 100,

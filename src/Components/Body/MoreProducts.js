@@ -1,10 +1,15 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Typography from "@material-ui/core/Typography";
 import { useLocation } from "react-router-dom";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import IconButton from "@material-ui/core/IconButton";
+import StarRate from "@material-ui/icons/StarRate";
+import { NavLink } from "react-router-dom";
 import "./carousel.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -38,11 +43,12 @@ const useStyles = makeStyles((theme) => ({
 
 function Group({ item }) {
   const classes = useStyles();
+  const [fav, setFav] = useState(false);
   return (
     <Grid item lg={2} className={classes.root} md={6} key={item.id}>
       <Paper
         style={{
-          height: 200,
+          height: 250,
           width: 180,
           display: "flex",
           flexDirection: "column",
@@ -51,15 +57,39 @@ function Group({ item }) {
         }}
         elevation={0}
       >
-        <div className={classes.imageDiv}>
-          <img
-            src={item.image}
-            alt={item.name}
-            height={140}
-            className={classes.image}
-          />
+        <div className="rating">
+          <div className="rating-icon">
+            <p>{item.rating}</p>
+            <StarRate className="rating-star" fontSize="small" />
+          </div>
+          <IconButton
+            color="secondary"
+            onClick={() => {
+              setFav(!fav);
+            }}
+          >
+            {fav ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+          </IconButton>
         </div>
-        <Typography variant="caption">{item.name}</Typography>
+        <NavLink
+          to={{ pathname: "/details", state: item }}
+          style={{ textDecoration: "none" }}
+        >
+          <div className={classes.imageDiv}>
+            <img
+              src={item.image}
+              alt={item.name}
+              height={140}
+              className={classes.image}
+            />
+          </div>
+        </NavLink>
+        <NavLink
+          to={{ pathname: "/details", state: item }}
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <Typography variant="caption">{item.name}</Typography>
+        </NavLink>
         <Typography varient="subtitle1" style={{ color: "green" }}>
           only ₹{item.price}
         </Typography>
