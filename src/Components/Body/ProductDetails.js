@@ -17,6 +17,19 @@ import Button from "@material-ui/core/Button";
 import OfflineBoltIcon from "@material-ui/icons/OfflineBolt";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import "./carousel.css";
+import { postFavorite, deleteFavorite } from "../../Redux/ActionCreators";
+import { connect } from "react-redux";
+
+const mapSateToProps = (state) => {
+  return {
+    favorites: state.favorites,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  postFavorite: (itemId) => dispatch(postFavorite(itemId)),
+  deleteFavorite: (itemId) => dispatch(deleteFavorite(itemId)),
+});
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -27,12 +40,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function RenderDetalis() {
+function RenderDetalis(props) {
+  const favorites = props.favorites;
+  const deleteFavorite = props.deleteFavorite;
+  const postFavorite = props.postFavorite;
   const classes = useStyles();
   const matches = useMediaQuery("(min-width:600px)"); //to calculate device width
   const location = useLocation();
-  const [fav, setFav] = useState(false);
   const item = location.state;
+  //this function will handel the favorites [adding and removing with appropriate mssg]
+  const handleFavorites = (itemId) => {
+    favorites.some((el) => el === itemId)
+      ? deleteFavorite(itemId)
+      : postFavorite(itemId);
+  };
   return (
     <Grid className="detail" container justify="center">
       <Grid item lg={6} md={12} className="detail-box-image-grid">
@@ -57,12 +78,14 @@ function RenderDetalis() {
             <div className="rating" style={{ justifyContent: "flex-end" }}>
               <IconButton
                 color="secondary"
-                onClick={() => {
-                  setFav(!fav);
-                }}
+                onClick={() => handleFavorites(item.id)}
                 style={{ marginRight: 50 }}
               >
-                {fav ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                {props.favorites.some((el) => el === item.id) ? (
+                  <FavoriteIcon />
+                ) : (
+                  <FavoriteBorderIcon />
+                )}
               </IconButton>
             </div>
           ) : null}
@@ -74,11 +97,13 @@ function RenderDetalis() {
             >
               <IconButton
                 color="secondary"
-                onClick={() => {
-                  setFav(!fav);
-                }}
+                onClick={() => handleFavorites(item.id)}
               >
-                {fav ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                {props.favorites.some((el) => el === item.id) ? (
+                  <FavoriteIcon />
+                ) : (
+                  <FavoriteBorderIcon />
+                )}
               </IconButton>
             </div>
           ) : null}
@@ -239,8 +264,15 @@ function RenderDetalis() {
   );
 }
 
-export default class ProductDetails extends Component {
+class ProductDetails extends Component {
   render() {
-    return <RenderDetalis />;
+    return (
+      <RenderDetalis
+        favorites={this.props.favorites}
+        postFavorite={this.props.postFavorite}
+        deleteFavorite={this.props.deleteFavorite}
+      />
+    );
   }
 }
+export default connect(mapSateToProps, mapDispatchToProps)(ProductDetails);

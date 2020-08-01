@@ -10,7 +10,19 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import StarRate from "@material-ui/icons/StarRate";
 import IconButton from "@material-ui/core/IconButton";
 import { Link } from "react-router-dom";
+import { postFavorite, deleteFavorite } from "../../Redux/ActionCreators";
+import { connect } from "react-redux";
 import "./carousel.css";
+
+const mapStateToProps = (state) => {
+  return {
+    favorites: state.favorites,
+  };
+};
+const mapDispatchToProps = (dispatch) => ({
+  postFavorite: (itemId) => dispatch(postFavorite(itemId)),
+  deleteFavorite: (itemId) => dispatch(deleteFavorite(itemId)),
+});
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,9 +55,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Group({ item }) {
+function Group(props) {
   const classes = useStyles();
-  const [fav, setFav] = useState(false);
+  const item = props.item;
+  const favorites = props.favorites;
+  console.log(props);
+  const deleteFavorite = props.deleteFavorite;
+  const postFavorite = props.postFavorite;
+  //this function will handel the favorites [adding and removing with appropriate mssg]
+  const handleFavorites = (itemId) => {
+    favorites.some((el) => el === itemId)
+      ? deleteFavorite(itemId)
+      : postFavorite(itemId);
+  };
   return (
     <Grid item lg={2} className={classes.root} md={6} key={item.id}>
       <Paper
@@ -59,11 +81,13 @@ function Group({ item }) {
           </div>
           <IconButton
             color="secondary"
-            onClick={() => {
-              setFav(!fav);
-            }}
+            onClick={() => handleFavorites(item.id)}
           >
-            {fav ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+            {favorites.some((el) => el === item.id) ? (
+              <FavoriteIcon />
+            ) : (
+              <FavoriteBorderIcon />
+            )}
           </IconButton>
         </div>
         <Link
@@ -97,7 +121,7 @@ function Group({ item }) {
   );
 }
 
-function RenderProductGroup() {
+function RenderProductGroup(props) {
   const classes = useStyles();
   const result = ITEMS.filter((item) => item.trending);
   const matches = useMediaQuery("(min-width:600px)"); //to calculate device width
@@ -108,19 +132,20 @@ function RenderProductGroup() {
     >
       {result.map((item) => (
         <div key={item.id}>
-          <Group item={item} />
+          <Group item={item} {...props} />
         </div>
       ))}
     </div>
   );
 }
 
-export default class ProductsGroup extends Component {
+class ProductsGroup extends Component {
   render() {
     return (
       <div>
-        <RenderProductGroup />
+        <RenderProductGroup {...this.props} />
       </div>
     );
   }
 }
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsGroup);

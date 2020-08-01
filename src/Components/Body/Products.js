@@ -12,8 +12,20 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { NavLink } from "react-router-dom";
 import StarRate from "@material-ui/icons/StarRate";
-
+import { postFavorite, deleteFavorite } from "../../Redux/ActionCreators";
+import { connect } from "react-redux";
 import "./carousel.css";
+
+const mapStateToProps = (state) => {
+  return {
+    favorites: state.favorites,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  postFavorite: (itemId) => dispatch(postFavorite(itemId)),
+  deleteFavorite: (itemId) => dispatch(deleteFavorite(itemId)),
+});
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,9 +66,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Group({ item }) {
+function Group(props) {
+  const item = props.item;
+  const favorites = props.favorites;
+
+  const postFavorite = props.postFavorite;
+  const deleteFavorite = props.deleteFavorite;
   const classes = useStyles();
-  const [fav, setFav] = useState(false);
+  //this function will handel the favorites [adding and removing with appropriate mssg]
+  const handleFavorites = (itemId) => {
+    favorites.some((el) => el === itemId)
+      ? deleteFavorite(itemId)
+      : postFavorite(itemId);
+  };
   return (
     <Grid item lg={2} className={classes.root} md={6} key={item.id}>
       <Paper
@@ -77,11 +99,13 @@ function Group({ item }) {
           </div>
           <IconButton
             color="secondary"
-            onClick={() => {
-              setFav(!fav);
-            }}
+            onClick={() => handleFavorites(item.id)}
           >
-            {fav ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+            {favorites.some((el) => el === item.id) ? (
+              <FavoriteIcon />
+            ) : (
+              <FavoriteBorderIcon />
+            )}
           </IconButton>
         </div>
         <NavLink
@@ -111,7 +135,8 @@ function Group({ item }) {
   );
 }
 
-function RenderProductGroup({ items }) {
+function RenderProductGroup(props) {
+  const items = props.items;
   const classes = useStyles();
   const matches = useMediaQuery("(min-width:600px)"); //to calculate device width
   if (!matches) {
@@ -134,7 +159,7 @@ function RenderProductGroup({ items }) {
         </Grid>
         {items.map((item) => (
           <div key={item.id}>
-            <Group item={item} />
+            <Group item={item} {...props} />
           </div>
         ))}
 
@@ -173,12 +198,12 @@ function RenderProductGroup({ items }) {
         </Grid>
         {items.map((item) => (
           <div key={item.id}>
-            <Group item={item} />
+            <Group item={item} {...props} />
           </div>
         ))}
         {items.map((item) => (
           <div key={item.id}>
-            <Group item={item} />
+            <Group item={item} {...props} />
           </div>
         ))}
 
@@ -202,7 +227,7 @@ function RenderProductGroup({ items }) {
   }
 }
 
-export default class Products extends Component {
+class Products extends Component {
   render() {
     const speakers = ITEMS.filter((item) => item.category === "speakers");
     const mobiles = ITEMS.filter((item) => item.category === "mobiles");
@@ -210,11 +235,12 @@ export default class Products extends Component {
     const women = ITEMS.filter((item) => item.category === "women");
     return (
       <div>
-        <RenderProductGroup items={speakers} />
-        <RenderProductGroup items={mobiles} />
-        <RenderProductGroup items={men} />
-        <RenderProductGroup items={women} />
+        <RenderProductGroup items={speakers} {...this.props} />
+        <RenderProductGroup items={mobiles} {...this.props} />
+        <RenderProductGroup items={men} {...this.props} />
+        <RenderProductGroup items={women} {...this.props} />
       </div>
     );
   }
 }
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
