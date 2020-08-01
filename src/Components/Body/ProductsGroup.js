@@ -59,7 +59,6 @@ function Group(props) {
   const classes = useStyles();
   const item = props.item;
   const favorites = props.favorites;
-  console.log(props);
   const deleteFavorite = props.deleteFavorite;
   const postFavorite = props.postFavorite;
   //this function will handel the favorites [adding and removing with appropriate mssg]

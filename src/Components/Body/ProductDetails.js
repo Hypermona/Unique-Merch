@@ -19,6 +19,8 @@ import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import "./carousel.css";
 import { postFavorite, deleteFavorite } from "../../Redux/ActionCreators";
 import { connect } from "react-redux";
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from "@material-ui/lab/Alert";
 
 const mapSateToProps = (state) => {
   return {
@@ -39,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 18,
   },
 }));
-
 function RenderDetalis(props) {
   const favorites = props.favorites;
   const deleteFavorite = props.deleteFavorite;
@@ -48,12 +49,25 @@ function RenderDetalis(props) {
   const matches = useMediaQuery("(min-width:600px)"); //to calculate device width
   const location = useLocation();
   const item = location.state;
-  //this function will handel the favorites [adding and removing with appropriate mssg]
-  const handleFavorites = (itemId) => {
-    favorites.some((el) => el === itemId)
-      ? deleteFavorite(itemId)
-      : postFavorite(itemId);
+  const [open, setOpen] = useState(false);
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
   };
+  const handleCart = () => {
+    setOpen(true);
+  };
+  //this function will handel the favorites [adding and removing with appropriate mssg]
+  const handleFavorites = (itemId, itemName, vPos) => {
+    if (favorites.some((el) => el === itemId)) {
+      deleteFavorite(itemId);
+    } else {
+      postFavorite(itemId);
+    }
+  };
+
   return (
     <Grid className="detail" container justify="center">
       <Grid item lg={6} md={12} className="detail-box-image-grid">
@@ -97,7 +111,7 @@ function RenderDetalis(props) {
             >
               <IconButton
                 color="secondary"
-                onClick={() => handleFavorites(item.id)}
+                onClick={() => handleFavorites(item.id, item.name, "bottom")}
               >
                 {props.favorites.some((el) => el === item.id) ? (
                   <FavoriteIcon />
@@ -117,9 +131,24 @@ function RenderDetalis(props) {
                   backgroundColor: "#ff9f00",
                 }}
                 startIcon={<ShoppingBasketIcon fontSize="large" />}
+                onClick={() => handleCart()}
               >
                 Add TO CART
               </Button>
+              <Snackbar
+                open={open}
+                autoHideDuration={4000}
+                onclose={handleClose}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+              >
+                <Alert
+                  variant="filled"
+                  severity="success"
+                  onClose={handleClose}
+                >
+                  {item.name} is successfuly added to your cart
+                </Alert>
+              </Snackbar>
               <Button
                 variant="contained"
                 className={classes.button}
@@ -230,9 +259,24 @@ function RenderDetalis(props) {
                   backgroundColor: "#ff9f00",
                 }}
                 startIcon={<ShoppingBasketIcon fontSize="large" />}
+                onClick={() => handleCart()}
               >
                 Add TO CART
               </Button>
+              <Snackbar
+                open={open}
+                autoHideDuration={4000}
+                onclose={handleClose}
+                anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+              >
+                <Alert
+                  variant="filled"
+                  severity="success"
+                  onClose={handleClose}
+                >
+                  {item.name} is successfuly added to your cart
+                </Alert>
+              </Snackbar>
               <Button
                 variant="contained"
                 className={classes.button}
