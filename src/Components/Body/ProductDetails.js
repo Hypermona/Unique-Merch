@@ -60,7 +60,7 @@ function RenderDetalis(props) {
     setOpen(true);
   };
   //this function will handel the favorites [adding and removing with appropriate mssg]
-  const handleFavorites = (itemId, itemName, vPos) => {
+  const handleFavorites = (itemId) => {
     if (favorites.some((el) => el === itemId)) {
       deleteFavorite(itemId);
     } else {

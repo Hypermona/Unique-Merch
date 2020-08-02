@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -13,6 +13,8 @@ import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import Category from "./Category";
+import Drawer from "@material-ui/core/Drawer";
+import MainDrawer from "./Drawer";
 
 const useStyles = makeStyles((theme) => ({
   //styles
@@ -93,9 +95,11 @@ function Logo({ matches, classes }) {
 }
 
 // main header component
-export default function Header() {
+export default function Header(props) {
   const matches = useMediaQuery("(min-width:600px)"); //to calculate device width
   const classes = useStyles(); //intialized styles
+  const [menu, setMenu] = useState(false);
+
   return (
     <div className={classes.root}>
       <AppBar position="sticky">
@@ -105,6 +109,7 @@ export default function Header() {
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
+            onClick={() => setMenu(true)}
           >
             <MenuIcon />
           </IconButton>
@@ -139,6 +144,16 @@ export default function Header() {
           </Paper>
         </Grid>
       </Grid>
+
+      <Drawer anchor="left" open={menu} onClose={() => setMenu(false)}>
+        <div
+          style={{ width: 250 }}
+          onClick={() => setMenu(false)}
+          onKeyDown={() => setMenu(false)}
+        >
+          <MainDrawer />
+        </div>
+      </Drawer>
     </div>
   );
 }
