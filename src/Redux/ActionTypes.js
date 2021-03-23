@@ -1,2 +1,6 @@
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const DELETE_FAVORITE = "DELETE_FAVORITE";
+export const ADD_CART_ITEM = "ADD_CART_ITEM";
+export const DELETE_CART_ITEM = "DELETE_CART_ITEM";
+export const ADD_ORDER = "ADD_ORDER";
+export const REMOVE_ORDER = "REMOVE_ORDER";

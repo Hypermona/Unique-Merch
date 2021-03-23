@@ -23,9 +23,9 @@ function RenderDropdown({ title }) {
         <Typography variant="overline">{title}</Typography>
       </button>
       <div className="dropdown-content">
-        <a href="#h">Link 1</a>
-        <a href="#h">Link 2</a>
-        <a href="#h">Link 3</a>
+        <a href="#h">item 1</a>
+        <a href="#h">item 2</a>
+        <a href="#h">item 3</a>
       </div>
     </div>
   );

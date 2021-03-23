@@ -15,6 +15,7 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import Category from "./Category";
 import Drawer from "@material-ui/core/Drawer";
 import MainDrawer from "./Drawer";
+import { Link, NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   //styles
@@ -85,7 +86,9 @@ function Logo({ matches, classes }) {
     return (
       <>
         <Typography variant="h5" className={classes.title}>
-          UniqueMerch
+          <NavLink to="/" style={{ color: "inherit", textDecoration: "none" }}>
+            UNIQUE MERCH
+          </NavLink>
         </Typography>
       </>
     );
@@ -99,7 +102,11 @@ export default function Header(props) {
   const matches = useMediaQuery("(min-width:600px)"); //to calculate device width
   const classes = useStyles(); //intialized styles
   const [menu, setMenu] = useState(false);
-
+  const [user, setUser] = useState(sessionStorage.getItem("user"));
+  const handleSignOut = () => {
+    sessionStorage.removeItem("user");
+    setUser(sessionStorage.getItem("user"));
+  };
   return (
     <div className={classes.root}>
       <AppBar position="sticky">
@@ -127,13 +134,42 @@ export default function Header(props) {
               inputProps={{ "aria-label": "search" }}
             />
           </div>
-          <Button color="inherit" style={{ border: 0 }}>
-            Sign Up
-          </Button>
-          <Button color="inherit">Login</Button>
-          <IconButton color="inherit">
-            <AddShoppingCartIcon />
-          </IconButton>
+          {!user ? (
+            <>
+              <Link
+                to="/signUp"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <Button color="inherit" style={{ border: 0 }}>
+                  Sign Up
+                </Button>
+              </Link>
+              <Link
+                to="/signIn"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <Button color="inherit">Login</Button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                style={{ textDecoration: "none", color: "inherit" }}
+                to="/cart"
+              >
+                <IconButton color="inherit">
+                  <AddShoppingCartIcon />
+                </IconButton>
+              </Link>
+              <Button
+                color="inherit"
+                onClick={handleSignOut}
+                style={{ border: 0 }}
+              >
+                Sign Out
+              </Button>
+            </>
+          )}
         </Toolbar>
       </AppBar>
       <Grid>

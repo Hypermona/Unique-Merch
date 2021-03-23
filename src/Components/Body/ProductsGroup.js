@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexWrap: "wrap",
     "& > *": {
-      margin: theme.spacing(0.5),
+      margin: theme.spacing(0),
       width: theme.spacing(16),
       height: theme.spacing(16),
     },
@@ -53,6 +53,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "2vh",
     boxShadow: "0px 2px 4px -2px rgba(0,0,0,0.65)",
   },
+  paper: {
+    padding: theme.spacing(2),
+  },
 }));
 
 function Group(props) {
@@ -68,11 +71,15 @@ function Group(props) {
       : postFavorite(itemId);
   };
   return (
-    <Grid item lg={2} className={classes.root} md={6} key={item.id}>
-      <Paper
-        style={{ height: 250, width: 180, alignItems: "center" }}
-        elevation={0}
-      >
+    <Grid
+      item
+      lg={2}
+      className={classes.root}
+      md={6}
+      key={item.id}
+      style={{ margin: "1vw 0.9vw" }}
+    >
+      <Paper style={{ height: 250, width: 180 }} elevation={0}>
         <div className="rating">
           <div className="rating-icon">
             <p>{item.rating}</p>
@@ -127,13 +134,58 @@ function RenderProductGroup(props) {
   return (
     <div
       className={classes.productGroup}
-      style={{ backgroundColor: !matches ? "inherit" : "white" }}
+      style={{
+        backgroundColor: !matches ? "inherit" : "white",
+        margin: "auto",
+        backgroundImage: "linear-gradient(#3f50b5,white)",
+      }}
     >
-      {result.map((item) => (
-        <div key={item.id}>
-          <Group item={item} {...props} />
-        </div>
-      ))}
+      <Grid item xs={12}>
+        <Paper
+          className={classes.paper}
+          elevation={0}
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <div className="fire">
+            <div className="fire-left">
+              <div className="main-fire"></div>
+              <div className="particle-fire"></div>
+            </div>
+            <div className="fire-main">
+              <div className="main-fire"></div>
+              <div className="particle-fire"></div>
+            </div>
+            <div className="fire-right">
+              <div className="main-fire"></div>
+              <div className="particle-fire"></div>
+            </div>
+            <div className="fire-bottom">
+              <div className="main-fire"></div>
+            </div>
+          </div>
+          <Typography
+            variant="h6"
+            className="detail-title"
+            style={{ marginLeft: "1vw" }}
+          >
+            Trending
+          </Typography>
+        </Paper>
+      </Grid>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          width: "100%",
+        }}
+      >
+        {result.map((item) => (
+          <div key={item.id}>
+            <Group item={item} {...props} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -141,7 +193,14 @@ function RenderProductGroup(props) {
 class ProductsGroup extends Component {
   render() {
     return (
-      <div>
+      <div
+        style={{
+          justifyContent: "center",
+          width: "100%",
+          alignItems: "center",
+          marginBottom: "2%",
+        }}
+      >
         <RenderProductGroup {...this.props} />
       </div>
     );

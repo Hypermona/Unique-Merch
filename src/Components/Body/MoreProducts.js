@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
@@ -124,6 +124,7 @@ function Group(props) {
 function RenderProductGroup(props) {
   const classes = useStyles();
   let location = useLocation();
+
   const matches = useMediaQuery("(min-width:600px)"); //to calculate device width
   return (
     <div
@@ -133,6 +134,21 @@ function RenderProductGroup(props) {
       <div className="product-title">
         <Typography variant="button">{location.state[0].category}</Typography>
       </div>
+      {location.state.map((item) => (
+        <div key={item.id}>
+          <Group item={item} {...props} />
+        </div>
+      ))}
+      {location.state.map((item) => (
+        <div key={item.id}>
+          <Group item={item} {...props} />
+        </div>
+      ))}
+      {location.state.map((item) => (
+        <div key={item.id}>
+          <Group item={item} {...props} />
+        </div>
+      ))}
       {location.state.map((item) => (
         <div key={item.id}>
           <Group item={item} {...props} />

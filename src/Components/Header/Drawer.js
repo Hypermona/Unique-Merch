@@ -22,6 +22,7 @@ export default class MainDrawer extends Component {
     super(props);
     this.state = {
       isOpen: true,
+      user: sessionStorage.getItem("user"),
     };
   }
 
@@ -29,7 +30,9 @@ export default class MainDrawer extends Component {
     return (
       <div>
         <List component="nav">
-          <Typography variant="h5">UniqueMerch</Typography>
+          <Typography variant="h4" align="center">
+            UniqueMerch
+          </Typography>
           <NavLink to="/" style={{ textDecoration: "none", color: "inherit" }}>
             <ListItem button>
               <ListItemIcon>
@@ -71,48 +74,80 @@ export default class MainDrawer extends Component {
               <ListItemText primary="Your Order" />
             </ListItem>
           </NavLink>
-          <ListItem button>
-            <ListItemIcon>
-              <PaymentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Payment Method" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <PersonPinCircleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Change Locations" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <LocalOfferIcon />
-            </ListItemIcon>
-            <ListItemText primary="Special Offers" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <ContactSupportIcon />
-            </ListItemIcon>
-            <ListItemText primary="Customer Service" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <AccountBoxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Your Account" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <SettingsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Other Settings" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <AddIcon />
-            </ListItemIcon>
-            <ListItemText primary="Sign In" />
-          </ListItem>
+          <NavLink
+            to="/payment"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <PaymentIcon />
+              </ListItemIcon>
+              <ListItemText primary="Payment Method" />
+            </ListItem>
+          </NavLink>
+          <NavLink
+            to="/address"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <PersonPinCircleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Shipping Address" />
+            </ListItem>
+          </NavLink>
+          <NavLink
+            to="/offers"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <LocalOfferIcon />
+              </ListItemIcon>
+              <ListItemText primary="Special Offers" />
+            </ListItem>
+          </NavLink>
+          <NavLink
+            to="/customerService"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <ContactSupportIcon />
+              </ListItemIcon>
+              <ListItemText primary="Customer Service" />
+            </ListItem>
+          </NavLink>
+          <NavLink
+            to="/account"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <AccountBoxIcon />
+              </ListItemIcon>
+              <ListItemText primary="Your Account" />
+            </ListItem>
+          </NavLink>
+          <NavLink
+            to="/settings"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <SettingsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Other Settings" />
+            </ListItem>
+          </NavLink>
+          {!this.state.user ? (
+            <ListItem button>
+              <ListItemIcon>
+                <AddIcon />
+              </ListItemIcon>
+              <ListItemText primary="Sign In" />
+            </ListItem>
+          ) : null}
         </List>
       </div>
     );

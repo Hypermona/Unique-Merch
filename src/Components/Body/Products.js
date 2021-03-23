@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
@@ -182,46 +182,83 @@ function RenderProductGroup(props) {
     );
   } else {
     return (
-      <div className="scroll-view" style={{ backgroundColor: "white" }}>
-        <Grid item lg={2} className={classes.root} md={6}>
-          <Paper className={classes.paperCard} elevation={0}>
-            <LocalFloristIcon />
-            <Typography variant="button">{items[0].category}</Typography>
-            <Typography variant="button" color="textSecondary">
-              limited offer
+      <div
+        className={classes.productGroup}
+        style={{
+          backgroundColor: !matches ? "inherit" : "white",
+          margin: "auto",
+          backgroundImage: "linear-gradient(#3f50b5,white)",
+          marginBottom: "1vw",
+        }}
+      >
+        <Grid item xs={12}>
+          <Paper
+            className={classes.paper}
+            elevation={0}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              padding: "1vw 1vw",
+            }}
+            variant="outlined"
+            square={true}
+          >
+            <Typography variant="h5" style={{ padding: "1vw" }}>
+              <LocalFloristIcon fontSize="small" />
+              {" " + items[0].category}
             </Typography>
-
-            <Typography variant="caption" color="error">
-              1 day 2hrs 59min left
-            </Typography>
-          </Paper>
-        </Grid>
-        {items.map((item) => (
-          <div key={item.id}>
-            <Group item={item} {...props} />
-          </div>
-        ))}
-        {items.map((item) => (
-          <div key={item.id}>
-            <Group item={item} {...props} />
-          </div>
-        ))}
-
-        <Grid item lg={2} className={classes.root} md={6}>
-          <Paper className={classes.paperCard} elevation={0}>
-            <NavLink
-              to={{ pathname: "/more", state: items }}
-              style={{ textDecoration: "none" }}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                padding: "0.5vw 1.5vw",
+              }}
             >
-              <IconButton size="medium" edge="end">
-                <ArrowForwardIosIcon fontSize="large" />
-              </IconButton>
-              <Typography variant="subtitle1" color="textSecondary">
-                View All
+              <Typography variant="button" color="textSecondary">
+                limited offer
               </Typography>
-            </NavLink>
+              <Typography variant="caption" color="error">
+                1 day 2hrs 59min left
+              </Typography>
+            </div>
           </Paper>
         </Grid>
+        <div
+          style={{
+            width: "100%",
+            backgroundColor: "white",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
+          {items.map((item) => (
+            <div key={item.id}>
+              <Group item={item} {...props} />
+            </div>
+          ))}
+
+          <div key={items[0].id}>
+            <Group item={items[0]} {...props} />
+          </div>
+
+          <Grid item lg={2} className={classes.root} md={6}>
+            <Paper className={classes.paperCard} elevation={0}>
+              <NavLink
+                to={{ pathname: "/more", state: items }}
+                style={{ textDecoration: "none" }}
+              >
+                <IconButton size="medium" edge="end">
+                  <ArrowForwardIosIcon fontSize="large" />
+                </IconButton>
+                <Typography variant="subtitle1" color="textSecondary">
+                  View All
+                </Typography>
+              </NavLink>
+            </Paper>
+          </Grid>
+        </div>
       </div>
     );
   }
