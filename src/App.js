@@ -7,11 +7,12 @@ import { BrowserRouter } from "react-router-dom";
 import ReactGA from "react-ga";
 
 const store = ConfigureStore();
-useEffect(() => {
-  ReactGA.initialize("UA-192838886-1");
-  ReactGA.pageview(window.location.pathname + window.location.search);
-}, []);
+
 function App() {
+  useEffect(() => {
+    ReactGA.initialize("UA-192838886-1");
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
   return (
     <Provider store={store}>
       <BrowserRouter>
