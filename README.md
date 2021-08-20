@@ -1,5 +1,31 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Click [here](https://unique-merch-hypermona.vercel.app/) to try this app
+
+![home](https://github.com/Hypermona/Unique-Merch/blob/f8ff0ac2f464766be0d926f24639d0c1eac25610/public/u_home.png)
+
+![home](https://github.com/Hypermona/Unique-Merch/blob/f8ff0ac2f464766be0d926f24639d0c1eac25610/public/u_login.png)
+
+![home](https://github.com/Hypermona/Unique-Merch/blob/f8ff0ac2f464766be0d926f24639d0c1eac25610/public/u_ele_product.png)
+
+![home](https://github.com/Hypermona/Unique-Merch/blob/f8ff0ac2f464766be0d926f24639d0c1eac25610/public/u_woman.png)
+
+![home](https://github.com/Hypermona/Unique-Merch/blob/f8ff0ac2f464766be0d926f24639d0c1eac25610/public/u_details.png)
+
+![home](https://github.com/Hypermona/Unique-Merch/blob/f8ff0ac2f464766be0d926f24639d0c1eac25610/public/u_cart.png)
+
+![home](https://github.com/Hypermona/Unique-Merch/blob/f8ff0ac2f464766be0d926f24639d0c1eac25610/public/u_quantity.png)
+
+![home](https://github.com/Hypermona/Unique-Merch/blob/f8ff0ac2f464766be0d926f24639d0c1eac25610/public/u_payment.png)
+
+![home](https://github.com/Hypermona/Unique-Merch/blob/f8ff0ac2f464766be0d926f24639d0c1eac25610/public/u_order.png)
+
+![home](https://github.com/Hypermona/Unique-Merch/blob/f8ff0ac2f464766be0d926f24639d0c1eac25610/public/u_order.png)
+
+![home](https://github.com/Hypermona/Unique-Merch/blob/f8ff0ac2f464766be0d926f24639d0c1eac25610/public/u_drawer.png)
+
+![home](https://github.com/Hypermona/Unique-Merch/blob/f8ff0ac2f464766be0d926f24639d0c1eac25610/public/u_fav.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
